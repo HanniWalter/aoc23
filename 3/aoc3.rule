@@ -1,0 +1,1341 @@
+@RULE aoc3
+@TABLE
+n_states:202
+neighborhood:Moore
+symmetries:none
+var c_num={22,23,24,25,26,27,28,29,30,31}
+var c_num_2={22,23,24,25,26,27,28,29,30,31}
+var d_num={12,13,14,15,16,17,18,19,20,21}
+var b={32,33,34,35,36,37,38,39,40,41,42}
+var plainnumber={2,3,4,5,6,7,8,9,10,11}
+var fieldvalue_start={43,44,45,46,47,48,49,50,51,52,1,12,13,14,15,16,17,18,19,20,21}
+var fieldvalue={43,44,45,46,47,48,49,50,51,52,1,2,3,4,5,6,7,8,9,10,11}
+var willadd={77,78,79,80,81,82,83,84,85,86}
+var dotcarry={87,89,91,93,95,97,99,101,103,105}
+var yellow_num={107,110,113,116,119,122,125,128,131,134}
+var red_num={108,111,114,117,120,123,126,129,132,135}
+var orange_num={109,112,115,118,121,124,127,130,133,136}
+var heal_num={140,141,142,143,144,145,146,147,148,149}
+var add={172,175,178,181,184,187,190,193,196,199}
+var no_carry={173,176,179,182,185,188,191,194,197,200}
+var carry={174,177,180,183,186,189,192,195,198,201}
+var any0={0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189,190,191,192,193,194,195,196,197,198,199,200,201}
+var any1={0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189,190,191,192,193,194,195,196,197,198,199,200,201}
+var any2={0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189,190,191,192,193,194,195,196,197,198,199,200,201}
+var any3={0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189,190,191,192,193,194,195,196,197,198,199,200,201}
+var any4={0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189,190,191,192,193,194,195,196,197,198,199,200,201}
+var any5={0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189,190,191,192,193,194,195,196,197,198,199,200,201}
+var any6={0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189,190,191,192,193,194,195,196,197,198,199,200,201}
+var any7={0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189,190,191,192,193,194,195,196,197,198,199,200,201}
+var any8={0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189,190,191,192,193,194,195,196,197,198,199,200,201}
+var any9={0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189,190,191,192,193,194,195,196,197,198,199,200,201}
+43,any0,any1,any2,any3,any4,any5,any6,any7,54
+44,any0,any1,any2,any3,any4,any5,any6,any7,54
+45,any0,any1,any2,any3,any4,any5,any6,any7,54
+46,any0,any1,any2,any3,any4,any5,any6,any7,54
+47,any0,any1,any2,any3,any4,any5,any6,any7,54
+48,any0,any1,any2,any3,any4,any5,any6,any7,54
+49,any0,any1,any2,any3,any4,any5,any6,any7,54
+50,any0,any1,any2,any3,any4,any5,any6,any7,54
+51,any0,any1,any2,any3,any4,any5,any6,any7,54
+52,any0,any1,any2,any3,any4,any5,any6,any7,54
+54,any0,any1,any2,any3,any4,any5,any6,any7,1
+53,any0,any1,any2,any3,any4,any5,any6,any7,1
+12,any0,any1,any2,any3,any4,any5,any6,54,22
+12,any0,any1,any2,any3,any4,any5,54,any7,22
+12,any0,any1,any2,any3,any4,54,any6,any7,22
+12,any0,any1,any2,any3,54,any5,any6,any7,22
+12,any0,any1,any2,54,any4,any5,any6,any7,22
+12,any0,any1,54,any3,any4,any5,any6,any7,22
+12,any0,54,any2,any3,any4,any5,any6,any7,22
+12,54,any1,any2,any3,any4,any5,any6,any7,22
+12,any0,any1,c_num,any3,any4,any5,any6,any7,22
+12,any0,any1,any2,any3,any4,any5,c_num,any7,22
+13,any0,any1,any2,any3,any4,any5,any6,54,23
+13,any0,any1,any2,any3,any4,any5,54,any7,23
+13,any0,any1,any2,any3,any4,54,any6,any7,23
+13,any0,any1,any2,any3,54,any5,any6,any7,23
+13,any0,any1,any2,54,any4,any5,any6,any7,23
+13,any0,any1,54,any3,any4,any5,any6,any7,23
+13,any0,54,any2,any3,any4,any5,any6,any7,23
+13,54,any1,any2,any3,any4,any5,any6,any7,23
+13,any0,any1,c_num,any3,any4,any5,any6,any7,23
+13,any0,any1,any2,any3,any4,any5,c_num,any7,23
+14,any0,any1,any2,any3,any4,any5,any6,54,24
+14,any0,any1,any2,any3,any4,any5,54,any7,24
+14,any0,any1,any2,any3,any4,54,any6,any7,24
+14,any0,any1,any2,any3,54,any5,any6,any7,24
+14,any0,any1,any2,54,any4,any5,any6,any7,24
+14,any0,any1,54,any3,any4,any5,any6,any7,24
+14,any0,54,any2,any3,any4,any5,any6,any7,24
+14,54,any1,any2,any3,any4,any5,any6,any7,24
+14,any0,any1,c_num,any3,any4,any5,any6,any7,24
+14,any0,any1,any2,any3,any4,any5,c_num,any7,24
+15,any0,any1,any2,any3,any4,any5,any6,54,25
+15,any0,any1,any2,any3,any4,any5,54,any7,25
+15,any0,any1,any2,any3,any4,54,any6,any7,25
+15,any0,any1,any2,any3,54,any5,any6,any7,25
+15,any0,any1,any2,54,any4,any5,any6,any7,25
+15,any0,any1,54,any3,any4,any5,any6,any7,25
+15,any0,54,any2,any3,any4,any5,any6,any7,25
+15,54,any1,any2,any3,any4,any5,any6,any7,25
+15,any0,any1,c_num,any3,any4,any5,any6,any7,25
+15,any0,any1,any2,any3,any4,any5,c_num,any7,25
+16,any0,any1,any2,any3,any4,any5,any6,54,26
+16,any0,any1,any2,any3,any4,any5,54,any7,26
+16,any0,any1,any2,any3,any4,54,any6,any7,26
+16,any0,any1,any2,any3,54,any5,any6,any7,26
+16,any0,any1,any2,54,any4,any5,any6,any7,26
+16,any0,any1,54,any3,any4,any5,any6,any7,26
+16,any0,54,any2,any3,any4,any5,any6,any7,26
+16,54,any1,any2,any3,any4,any5,any6,any7,26
+16,any0,any1,c_num,any3,any4,any5,any6,any7,26
+16,any0,any1,any2,any3,any4,any5,c_num,any7,26
+17,any0,any1,any2,any3,any4,any5,any6,54,27
+17,any0,any1,any2,any3,any4,any5,54,any7,27
+17,any0,any1,any2,any3,any4,54,any6,any7,27
+17,any0,any1,any2,any3,54,any5,any6,any7,27
+17,any0,any1,any2,54,any4,any5,any6,any7,27
+17,any0,any1,54,any3,any4,any5,any6,any7,27
+17,any0,54,any2,any3,any4,any5,any6,any7,27
+17,54,any1,any2,any3,any4,any5,any6,any7,27
+17,any0,any1,c_num,any3,any4,any5,any6,any7,27
+17,any0,any1,any2,any3,any4,any5,c_num,any7,27
+18,any0,any1,any2,any3,any4,any5,any6,54,28
+18,any0,any1,any2,any3,any4,any5,54,any7,28
+18,any0,any1,any2,any3,any4,54,any6,any7,28
+18,any0,any1,any2,any3,54,any5,any6,any7,28
+18,any0,any1,any2,54,any4,any5,any6,any7,28
+18,any0,any1,54,any3,any4,any5,any6,any7,28
+18,any0,54,any2,any3,any4,any5,any6,any7,28
+18,54,any1,any2,any3,any4,any5,any6,any7,28
+18,any0,any1,c_num,any3,any4,any5,any6,any7,28
+18,any0,any1,any2,any3,any4,any5,c_num,any7,28
+19,any0,any1,any2,any3,any4,any5,any6,54,29
+19,any0,any1,any2,any3,any4,any5,54,any7,29
+19,any0,any1,any2,any3,any4,54,any6,any7,29
+19,any0,any1,any2,any3,54,any5,any6,any7,29
+19,any0,any1,any2,54,any4,any5,any6,any7,29
+19,any0,any1,54,any3,any4,any5,any6,any7,29
+19,any0,54,any2,any3,any4,any5,any6,any7,29
+19,54,any1,any2,any3,any4,any5,any6,any7,29
+19,any0,any1,c_num,any3,any4,any5,any6,any7,29
+19,any0,any1,any2,any3,any4,any5,c_num,any7,29
+20,any0,any1,any2,any3,any4,any5,any6,54,30
+20,any0,any1,any2,any3,any4,any5,54,any7,30
+20,any0,any1,any2,any3,any4,54,any6,any7,30
+20,any0,any1,any2,any3,54,any5,any6,any7,30
+20,any0,any1,any2,54,any4,any5,any6,any7,30
+20,any0,any1,54,any3,any4,any5,any6,any7,30
+20,any0,54,any2,any3,any4,any5,any6,any7,30
+20,54,any1,any2,any3,any4,any5,any6,any7,30
+20,any0,any1,c_num,any3,any4,any5,any6,any7,30
+20,any0,any1,any2,any3,any4,any5,c_num,any7,30
+21,any0,any1,any2,any3,any4,any5,any6,54,31
+21,any0,any1,any2,any3,any4,any5,54,any7,31
+21,any0,any1,any2,any3,any4,54,any6,any7,31
+21,any0,any1,any2,any3,54,any5,any6,any7,31
+21,any0,any1,any2,54,any4,any5,any6,any7,31
+21,any0,any1,54,any3,any4,any5,any6,any7,31
+21,any0,54,any2,any3,any4,any5,any6,any7,31
+21,54,any1,any2,any3,any4,any5,any6,any7,31
+21,any0,any1,c_num,any3,any4,any5,any6,any7,31
+21,any0,any1,any2,any3,any4,any5,c_num,any7,31
+0,any0,any1,any2,any3,any4,any5,fieldvalue_start,any7,58
+0,any0,any1,any2,any3,any4,any5,58,any7,59
+0,any0,any1,any2,any3,any4,any5,59,any7,61
+0,any0,any1,any2,any3,any4,any5,any6,fieldvalue_start,55
+0,any0,any1,any2,any3,any4,any5,fieldvalue_start,any7,55
+0,any0,any1,any2,any3,any4,fieldvalue_start,any6,any7,55
+0,any0,any1,any2,any3,fieldvalue_start,any5,any6,any7,55
+0,any0,any1,any2,fieldvalue_start,any4,any5,any6,any7,55
+0,any0,any1,fieldvalue_start,any3,any4,any5,any6,any7,55
+0,any0,fieldvalue_start,any2,any3,any4,any5,any6,any7,55
+0,fieldvalue_start,any1,any2,any3,any4,any5,any6,any7,55
+0,any0,any1,any2,any3,any4,any5,any6,58,55
+0,any0,any1,any2,any3,any4,any5,58,any7,55
+0,any0,any1,any2,any3,any4,58,any6,any7,55
+0,any0,any1,any2,any3,58,any5,any6,any7,55
+0,any0,any1,any2,58,any4,any5,any6,any7,55
+0,any0,any1,58,any3,any4,any5,any6,any7,55
+0,any0,58,any2,any3,any4,any5,any6,any7,55
+0,58,any1,any2,any3,any4,any5,any6,any7,55
+0,any0,any1,any2,any3,any4,any5,any6,59,55
+0,any0,any1,any2,any3,any4,any5,59,any7,55
+0,any0,any1,any2,any3,any4,59,any6,any7,55
+0,any0,any1,any2,any3,59,any5,any6,any7,55
+0,any0,any1,any2,59,any4,any5,any6,any7,55
+0,any0,any1,59,any3,any4,any5,any6,any7,55
+0,any0,59,any2,any3,any4,any5,any6,any7,55
+0,59,any1,any2,any3,any4,any5,any6,any7,55
+0,any0,any1,any2,any3,any4,any5,any6,61,55
+0,any0,any1,any2,any3,any4,any5,61,any7,55
+0,any0,any1,any2,any3,any4,61,any6,any7,55
+0,any0,any1,any2,any3,61,any5,any6,any7,55
+0,any0,any1,any2,61,any4,any5,any6,any7,55
+0,any0,any1,61,any3,any4,any5,any6,any7,55
+0,any0,61,any2,any3,any4,any5,any6,any7,55
+0,61,any1,any2,any3,any4,any5,any6,any7,55
+0,any0,any1,any2,any3,any4,any5,any6,55,57
+0,any0,any1,any2,any3,any4,any5,55,any7,57
+0,any0,any1,any2,any3,any4,55,any6,any7,57
+0,any0,any1,any2,any3,55,any5,any6,any7,57
+0,any0,any1,any2,55,any4,any5,any6,any7,57
+0,any0,any1,55,any3,any4,any5,any6,any7,57
+0,any0,55,any2,any3,any4,any5,any6,any7,57
+0,55,any1,any2,any3,any4,any5,any6,any7,57
+0,any0,any1,any2,any3,any4,any5,any6,57,56
+0,any0,any1,any2,any3,any4,any5,57,any7,56
+0,any0,any1,any2,any3,any4,57,any6,any7,56
+0,any0,any1,any2,any3,57,any5,any6,any7,56
+0,any0,any1,any2,57,any4,any5,any6,any7,56
+0,any0,any1,57,any3,any4,any5,any6,any7,56
+0,any0,57,any2,any3,any4,any5,any6,any7,56
+0,57,any1,any2,any3,any4,any5,any6,any7,56
+57,57,any1,any2,any3,any4,any5,57,any7,62
+62,any0,any1,any2,any3,any4,any5,any6,any7,63
+57,any0,any1,any2,any3,62,any5,any6,any7,64
+57,any0,any1,any2,any3,any4,any5,64,any7,64
+57,any0,any1,any2,any3,64,any5,any6,any7,64
+57,any0,any1,64,any3,any4,any5,any6,any7,64
+57,64,any1,any2,any3,any4,any5,any6,any7,64
+64,any0,any1,any2,any3,any4,any5,any6,any7,65
+65,any0,any1,any2,any3,any4,any5,any6,any7,57
+55,58,any1,any2,any3,64,any5,any6,any7,60
+60,any0,any1,any2,any3,any4,any5,any6,any7,55
+58,any0,any1,any2,any3,60,any5,any6,any7,1
+58,any0,any1,any2,any3,1,any5,any6,any7,1
+59,any0,any1,any2,any3,any4,any5,1,any7,1
+61,any0,any1,any2,any3,any4,any5,1,any7,22
+55,any0,any1,any2,any3,any4,any5,any6,66,68
+55,any0,any1,any2,any3,any4,any5,66,any7,68
+55,any0,any1,any2,any3,any4,66,any6,any7,68
+55,any0,any1,any2,any3,66,any5,any6,any7,68
+55,any0,any1,any2,66,any4,any5,any6,any7,68
+55,any0,any1,66,any3,any4,any5,any6,any7,68
+55,any0,66,any2,any3,any4,any5,any6,any7,68
+55,66,any1,any2,any3,any4,any5,any6,any7,68
+68,any0,any1,any2,any3,any4,any5,any6,any7,55
+22,any0,any1,any2,any3,any4,any5,any6,68,32
+22,any0,any1,any2,any3,any4,any5,68,any7,32
+22,any0,any1,any2,any3,any4,68,any6,any7,32
+22,any0,any1,any2,any3,68,any5,any6,any7,32
+22,any0,any1,any2,68,any4,any5,any6,any7,32
+22,any0,any1,68,any3,any4,any5,any6,any7,32
+22,any0,68,any2,any3,any4,any5,any6,any7,32
+22,68,any1,any2,any3,any4,any5,any6,any7,32
+22,any0,any1,any2,any3,b,any5,any6,any7,32
+12,any0,any1,any2,any3,b,any5,any6,any7,42
+22,any0,any1,b,any3,any4,any5,any6,any7,32
+12,any0,any1,b,any3,any4,any5,any6,any7,42
+32,any0,any1,any2,any3,any4,any5,any6,any7,2
+23,any0,any1,any2,any3,b,any5,any6,any7,33
+13,any0,any1,any2,any3,b,any5,any6,any7,42
+23,any0,any1,b,any3,any4,any5,any6,any7,33
+13,any0,any1,b,any3,any4,any5,any6,any7,42
+33,any0,any1,any2,any3,any4,any5,any6,any7,3
+24,any0,any1,any2,any3,b,any5,any6,any7,34
+14,any0,any1,any2,any3,b,any5,any6,any7,42
+24,any0,any1,b,any3,any4,any5,any6,any7,34
+14,any0,any1,b,any3,any4,any5,any6,any7,42
+34,any0,any1,any2,any3,any4,any5,any6,any7,4
+25,any0,any1,any2,any3,b,any5,any6,any7,35
+15,any0,any1,any2,any3,b,any5,any6,any7,42
+25,any0,any1,b,any3,any4,any5,any6,any7,35
+15,any0,any1,b,any3,any4,any5,any6,any7,42
+35,any0,any1,any2,any3,any4,any5,any6,any7,5
+26,any0,any1,any2,any3,b,any5,any6,any7,36
+16,any0,any1,any2,any3,b,any5,any6,any7,42
+26,any0,any1,b,any3,any4,any5,any6,any7,36
+16,any0,any1,b,any3,any4,any5,any6,any7,42
+36,any0,any1,any2,any3,any4,any5,any6,any7,6
+27,any0,any1,any2,any3,b,any5,any6,any7,37
+17,any0,any1,any2,any3,b,any5,any6,any7,42
+27,any0,any1,b,any3,any4,any5,any6,any7,37
+17,any0,any1,b,any3,any4,any5,any6,any7,42
+37,any0,any1,any2,any3,any4,any5,any6,any7,7
+28,any0,any1,any2,any3,b,any5,any6,any7,38
+18,any0,any1,any2,any3,b,any5,any6,any7,42
+28,any0,any1,b,any3,any4,any5,any6,any7,38
+18,any0,any1,b,any3,any4,any5,any6,any7,42
+38,any0,any1,any2,any3,any4,any5,any6,any7,8
+29,any0,any1,any2,any3,b,any5,any6,any7,39
+19,any0,any1,any2,any3,b,any5,any6,any7,42
+29,any0,any1,b,any3,any4,any5,any6,any7,39
+19,any0,any1,b,any3,any4,any5,any6,any7,42
+39,any0,any1,any2,any3,any4,any5,any6,any7,9
+30,any0,any1,any2,any3,b,any5,any6,any7,40
+20,any0,any1,any2,any3,b,any5,any6,any7,42
+30,any0,any1,b,any3,any4,any5,any6,any7,40
+20,any0,any1,b,any3,any4,any5,any6,any7,42
+40,any0,any1,any2,any3,any4,any5,any6,any7,10
+31,any0,any1,any2,any3,b,any5,any6,any7,41
+21,any0,any1,any2,any3,b,any5,any6,any7,42
+31,any0,any1,b,any3,any4,any5,any6,any7,41
+21,any0,any1,b,any3,any4,any5,any6,any7,42
+41,any0,any1,any2,any3,any4,any5,any6,any7,11
+1,any0,any1,any2,any3,b,any5,any6,any7,42
+1,any0,any1,b,any3,any4,any5,any6,any7,42
+42,any0,any1,any2,any3,any4,any5,any6,any7,1
+63,any0,any1,any2,any3,any4,any5,64,any7,66
+66,any0,any1,any2,any3,any4,any5,any6,any7,67
+57,any0,any1,any2,any3,66,any5,any6,any7,64
+67,any0,any1,any2,any3,any4,any5,64,any7,70
+57,any0,any1,any2,any3,70,any5,any6,any7,72
+57,any0,any1,any2,any3,72,any5,any6,any7,72
+72,any0,any1,any2,any3,any4,any5,any6,any7,65
+70,any0,any1,any2,any3,any4,any5,any6,any7,71
+55,any0,any1,72,any3,any4,any5,fieldvalue,any7,74
+74,any0,any1,any2,any3,any4,any5,any6,any7,55
+75,any0,any1,any2,any3,any4,any5,plainnumber,any7,1
+75,any0,any1,any2,any3,any4,any5,1,any7,1
+77,any0,any1,any2,any3,any4,any5,any6,any7,2
+2,any0,any1,74,any3,any4,any5,any6,any7,77
+2,any0,any1,willadd,any3,any4,any5,any6,any7,77
+1,any0,any1,willadd,any3,any4,any5,any6,any7,75
+78,any0,any1,any2,any3,any4,any5,any6,any7,3
+3,any0,any1,74,any3,any4,any5,any6,any7,78
+3,any0,any1,willadd,any3,any4,any5,any6,any7,78
+1,any0,any1,willadd,any3,any4,any5,any6,any7,75
+79,any0,any1,any2,any3,any4,any5,any6,any7,4
+4,any0,any1,74,any3,any4,any5,any6,any7,79
+4,any0,any1,willadd,any3,any4,any5,any6,any7,79
+1,any0,any1,willadd,any3,any4,any5,any6,any7,75
+80,any0,any1,any2,any3,any4,any5,any6,any7,5
+5,any0,any1,74,any3,any4,any5,any6,any7,80
+5,any0,any1,willadd,any3,any4,any5,any6,any7,80
+1,any0,any1,willadd,any3,any4,any5,any6,any7,75
+81,any0,any1,any2,any3,any4,any5,any6,any7,6
+6,any0,any1,74,any3,any4,any5,any6,any7,81
+6,any0,any1,willadd,any3,any4,any5,any6,any7,81
+1,any0,any1,willadd,any3,any4,any5,any6,any7,75
+82,any0,any1,any2,any3,any4,any5,any6,any7,7
+7,any0,any1,74,any3,any4,any5,any6,any7,82
+7,any0,any1,willadd,any3,any4,any5,any6,any7,82
+1,any0,any1,willadd,any3,any4,any5,any6,any7,75
+83,any0,any1,any2,any3,any4,any5,any6,any7,8
+8,any0,any1,74,any3,any4,any5,any6,any7,83
+8,any0,any1,willadd,any3,any4,any5,any6,any7,83
+1,any0,any1,willadd,any3,any4,any5,any6,any7,75
+84,any0,any1,any2,any3,any4,any5,any6,any7,9
+9,any0,any1,74,any3,any4,any5,any6,any7,84
+9,any0,any1,willadd,any3,any4,any5,any6,any7,84
+1,any0,any1,willadd,any3,any4,any5,any6,any7,75
+85,any0,any1,any2,any3,any4,any5,any6,any7,10
+10,any0,any1,74,any3,any4,any5,any6,any7,85
+10,any0,any1,willadd,any3,any4,any5,any6,any7,85
+1,any0,any1,willadd,any3,any4,any5,any6,any7,75
+86,any0,any1,any2,any3,any4,any5,any6,any7,11
+11,any0,any1,74,any3,any4,any5,any6,any7,86
+11,any0,any1,willadd,any3,any4,any5,any6,any7,86
+1,any0,any1,willadd,any3,any4,any5,any6,any7,75
+1,any0,any1,75,any3,any4,any5,1,any7,75
+88,any0,any1,any2,any3,any4,any5,any6,any7,87
+87,any0,any1,1,any3,any4,any5,any6,any7,1
+1,any0,any1,75,any3,any4,any5,2,any7,88
+2,any0,any1,88,any3,any4,any5,plainnumber,any7,1
+2,any0,any1,88,any3,any4,any5,1,any7,76
+2,any0,any1,88,any3,any4,any5,55,any7,76
+1,any0,any1,any2,any3,any4,any5,87,any7,87
+90,any0,any1,any2,any3,any4,any5,any6,any7,89
+89,any0,any1,1,any3,any4,any5,any6,any7,1
+1,any0,any1,75,any3,any4,any5,3,any7,90
+3,any0,any1,90,any3,any4,any5,plainnumber,any7,1
+3,any0,any1,90,any3,any4,any5,1,any7,76
+3,any0,any1,90,any3,any4,any5,55,any7,76
+1,any0,any1,any2,any3,any4,any5,89,any7,89
+92,any0,any1,any2,any3,any4,any5,any6,any7,91
+91,any0,any1,1,any3,any4,any5,any6,any7,1
+1,any0,any1,75,any3,any4,any5,4,any7,92
+4,any0,any1,92,any3,any4,any5,plainnumber,any7,1
+4,any0,any1,92,any3,any4,any5,1,any7,76
+4,any0,any1,92,any3,any4,any5,55,any7,76
+1,any0,any1,any2,any3,any4,any5,91,any7,91
+94,any0,any1,any2,any3,any4,any5,any6,any7,93
+93,any0,any1,1,any3,any4,any5,any6,any7,1
+1,any0,any1,75,any3,any4,any5,5,any7,94
+5,any0,any1,94,any3,any4,any5,plainnumber,any7,1
+5,any0,any1,94,any3,any4,any5,1,any7,76
+5,any0,any1,94,any3,any4,any5,55,any7,76
+1,any0,any1,any2,any3,any4,any5,93,any7,93
+96,any0,any1,any2,any3,any4,any5,any6,any7,95
+95,any0,any1,1,any3,any4,any5,any6,any7,1
+1,any0,any1,75,any3,any4,any5,6,any7,96
+6,any0,any1,96,any3,any4,any5,plainnumber,any7,1
+6,any0,any1,96,any3,any4,any5,1,any7,76
+6,any0,any1,96,any3,any4,any5,55,any7,76
+1,any0,any1,any2,any3,any4,any5,95,any7,95
+98,any0,any1,any2,any3,any4,any5,any6,any7,97
+97,any0,any1,1,any3,any4,any5,any6,any7,1
+1,any0,any1,75,any3,any4,any5,7,any7,98
+7,any0,any1,98,any3,any4,any5,plainnumber,any7,1
+7,any0,any1,98,any3,any4,any5,1,any7,76
+7,any0,any1,98,any3,any4,any5,55,any7,76
+1,any0,any1,any2,any3,any4,any5,97,any7,97
+100,any0,any1,any2,any3,any4,any5,any6,any7,99
+99,any0,any1,1,any3,any4,any5,any6,any7,1
+1,any0,any1,75,any3,any4,any5,8,any7,100
+8,any0,any1,100,any3,any4,any5,plainnumber,any7,1
+8,any0,any1,100,any3,any4,any5,1,any7,76
+8,any0,any1,100,any3,any4,any5,55,any7,76
+1,any0,any1,any2,any3,any4,any5,99,any7,99
+102,any0,any1,any2,any3,any4,any5,any6,any7,101
+101,any0,any1,1,any3,any4,any5,any6,any7,1
+1,any0,any1,75,any3,any4,any5,9,any7,102
+9,any0,any1,102,any3,any4,any5,plainnumber,any7,1
+9,any0,any1,102,any3,any4,any5,1,any7,76
+9,any0,any1,102,any3,any4,any5,55,any7,76
+1,any0,any1,any2,any3,any4,any5,101,any7,101
+104,any0,any1,any2,any3,any4,any5,any6,any7,103
+103,any0,any1,1,any3,any4,any5,any6,any7,1
+1,any0,any1,75,any3,any4,any5,10,any7,104
+10,any0,any1,104,any3,any4,any5,plainnumber,any7,1
+10,any0,any1,104,any3,any4,any5,1,any7,76
+10,any0,any1,104,any3,any4,any5,55,any7,76
+1,any0,any1,any2,any3,any4,any5,103,any7,103
+106,any0,any1,any2,any3,any4,any5,any6,any7,105
+105,any0,any1,1,any3,any4,any5,any6,any7,1
+1,any0,any1,75,any3,any4,any5,11,any7,106
+11,any0,any1,106,any3,any4,any5,plainnumber,any7,1
+11,any0,any1,106,any3,any4,any5,1,any7,76
+11,any0,any1,106,any3,any4,any5,55,any7,76
+1,any0,any1,any2,any3,any4,any5,105,any7,105
+dotcarry,any0,any1,plainnumber,any3,any4,any5,any6,any7,plainnumber
+plainnumber,any0,any1,any2,any3,any4,any5,dotcarry,any7,dotcarry
+87,any0,any1,orange_num,any3,any4,any5,2,any7,107
+87,any0,any1,55,any3,any4,any5,2,any7,107
+89,any0,any1,orange_num,any3,any4,any5,2,any7,110
+89,any0,any1,55,any3,any4,any5,2,any7,110
+91,any0,any1,orange_num,any3,any4,any5,2,any7,113
+91,any0,any1,55,any3,any4,any5,2,any7,113
+93,any0,any1,orange_num,any3,any4,any5,2,any7,116
+93,any0,any1,55,any3,any4,any5,2,any7,116
+95,any0,any1,orange_num,any3,any4,any5,2,any7,119
+95,any0,any1,55,any3,any4,any5,2,any7,119
+97,any0,any1,orange_num,any3,any4,any5,2,any7,122
+97,any0,any1,55,any3,any4,any5,2,any7,122
+99,any0,any1,orange_num,any3,any4,any5,2,any7,125
+99,any0,any1,55,any3,any4,any5,2,any7,125
+101,any0,any1,orange_num,any3,any4,any5,2,any7,128
+101,any0,any1,55,any3,any4,any5,2,any7,128
+103,any0,any1,orange_num,any3,any4,any5,2,any7,131
+103,any0,any1,55,any3,any4,any5,2,any7,131
+105,any0,any1,orange_num,any3,any4,any5,2,any7,134
+105,any0,any1,55,any3,any4,any5,2,any7,134
+108,any0,any1,any2,any3,any4,any5,any6,any7,107
+107,any0,any1,any2,any3,any4,any5,any6,any7,109
+2,any0,any1,red_num,any3,any4,any5,any6,any7,137
+138,any0,any1,any2,any3,any4,any5,2,any7,2
+2,any0,any1,138,any3,any4,any5,any6,any7,138
+137,any0,any1,any2,any3,any4,any5,2,any7,3
+2,any0,any1,137,any3,any4,any5,any6,any7,138
+2,any0,any1,red_num,any3,any4,any5,any6,any7,137
+87,any0,any1,orange_num,any3,any4,any5,3,any7,110
+87,any0,any1,55,any3,any4,any5,3,any7,110
+89,any0,any1,orange_num,any3,any4,any5,3,any7,113
+89,any0,any1,55,any3,any4,any5,3,any7,113
+91,any0,any1,orange_num,any3,any4,any5,3,any7,116
+91,any0,any1,55,any3,any4,any5,3,any7,116
+93,any0,any1,orange_num,any3,any4,any5,3,any7,119
+93,any0,any1,55,any3,any4,any5,3,any7,119
+95,any0,any1,orange_num,any3,any4,any5,3,any7,122
+95,any0,any1,55,any3,any4,any5,3,any7,122
+97,any0,any1,orange_num,any3,any4,any5,3,any7,125
+97,any0,any1,55,any3,any4,any5,3,any7,125
+99,any0,any1,orange_num,any3,any4,any5,3,any7,128
+99,any0,any1,55,any3,any4,any5,3,any7,128
+101,any0,any1,orange_num,any3,any4,any5,3,any7,131
+101,any0,any1,55,any3,any4,any5,3,any7,131
+103,any0,any1,orange_num,any3,any4,any5,3,any7,134
+103,any0,any1,55,any3,any4,any5,3,any7,134
+105,any0,any1,55,any3,any4,any5,3,any7,108
+105,any0,any1,orange_num,any3,any4,any5,3,any7,108
+111,any0,any1,any2,any3,any4,any5,any6,any7,110
+110,any0,any1,any2,any3,any4,any5,any6,any7,112
+3,any0,any1,red_num,any3,any4,any5,any6,any7,137
+138,any0,any1,any2,any3,any4,any5,3,any7,3
+3,any0,any1,138,any3,any4,any5,any6,any7,138
+137,any0,any1,any2,any3,any4,any5,3,any7,4
+3,any0,any1,137,any3,any4,any5,any6,any7,138
+3,any0,any1,red_num,any3,any4,any5,any6,any7,137
+87,any0,any1,orange_num,any3,any4,any5,4,any7,113
+87,any0,any1,55,any3,any4,any5,4,any7,113
+89,any0,any1,orange_num,any3,any4,any5,4,any7,116
+89,any0,any1,55,any3,any4,any5,4,any7,116
+91,any0,any1,orange_num,any3,any4,any5,4,any7,119
+91,any0,any1,55,any3,any4,any5,4,any7,119
+93,any0,any1,orange_num,any3,any4,any5,4,any7,122
+93,any0,any1,55,any3,any4,any5,4,any7,122
+95,any0,any1,orange_num,any3,any4,any5,4,any7,125
+95,any0,any1,55,any3,any4,any5,4,any7,125
+97,any0,any1,orange_num,any3,any4,any5,4,any7,128
+97,any0,any1,55,any3,any4,any5,4,any7,128
+99,any0,any1,orange_num,any3,any4,any5,4,any7,131
+99,any0,any1,55,any3,any4,any5,4,any7,131
+101,any0,any1,orange_num,any3,any4,any5,4,any7,134
+101,any0,any1,55,any3,any4,any5,4,any7,134
+103,any0,any1,55,any3,any4,any5,4,any7,108
+103,any0,any1,orange_num,any3,any4,any5,4,any7,108
+105,any0,any1,55,any3,any4,any5,4,any7,111
+105,any0,any1,orange_num,any3,any4,any5,4,any7,111
+114,any0,any1,any2,any3,any4,any5,any6,any7,113
+113,any0,any1,any2,any3,any4,any5,any6,any7,115
+4,any0,any1,red_num,any3,any4,any5,any6,any7,137
+138,any0,any1,any2,any3,any4,any5,4,any7,4
+4,any0,any1,138,any3,any4,any5,any6,any7,138
+137,any0,any1,any2,any3,any4,any5,4,any7,5
+4,any0,any1,137,any3,any4,any5,any6,any7,138
+4,any0,any1,red_num,any3,any4,any5,any6,any7,137
+87,any0,any1,orange_num,any3,any4,any5,5,any7,116
+87,any0,any1,55,any3,any4,any5,5,any7,116
+89,any0,any1,orange_num,any3,any4,any5,5,any7,119
+89,any0,any1,55,any3,any4,any5,5,any7,119
+91,any0,any1,orange_num,any3,any4,any5,5,any7,122
+91,any0,any1,55,any3,any4,any5,5,any7,122
+93,any0,any1,orange_num,any3,any4,any5,5,any7,125
+93,any0,any1,55,any3,any4,any5,5,any7,125
+95,any0,any1,orange_num,any3,any4,any5,5,any7,128
+95,any0,any1,55,any3,any4,any5,5,any7,128
+97,any0,any1,orange_num,any3,any4,any5,5,any7,131
+97,any0,any1,55,any3,any4,any5,5,any7,131
+99,any0,any1,orange_num,any3,any4,any5,5,any7,134
+99,any0,any1,55,any3,any4,any5,5,any7,134
+101,any0,any1,55,any3,any4,any5,5,any7,108
+101,any0,any1,orange_num,any3,any4,any5,5,any7,108
+103,any0,any1,55,any3,any4,any5,5,any7,111
+103,any0,any1,orange_num,any3,any4,any5,5,any7,111
+105,any0,any1,55,any3,any4,any5,5,any7,114
+105,any0,any1,orange_num,any3,any4,any5,5,any7,114
+117,any0,any1,any2,any3,any4,any5,any6,any7,116
+116,any0,any1,any2,any3,any4,any5,any6,any7,118
+5,any0,any1,red_num,any3,any4,any5,any6,any7,137
+138,any0,any1,any2,any3,any4,any5,5,any7,5
+5,any0,any1,138,any3,any4,any5,any6,any7,138
+137,any0,any1,any2,any3,any4,any5,5,any7,6
+5,any0,any1,137,any3,any4,any5,any6,any7,138
+5,any0,any1,red_num,any3,any4,any5,any6,any7,137
+87,any0,any1,orange_num,any3,any4,any5,6,any7,119
+87,any0,any1,55,any3,any4,any5,6,any7,119
+89,any0,any1,orange_num,any3,any4,any5,6,any7,122
+89,any0,any1,55,any3,any4,any5,6,any7,122
+91,any0,any1,orange_num,any3,any4,any5,6,any7,125
+91,any0,any1,55,any3,any4,any5,6,any7,125
+93,any0,any1,orange_num,any3,any4,any5,6,any7,128
+93,any0,any1,55,any3,any4,any5,6,any7,128
+95,any0,any1,orange_num,any3,any4,any5,6,any7,131
+95,any0,any1,55,any3,any4,any5,6,any7,131
+97,any0,any1,orange_num,any3,any4,any5,6,any7,134
+97,any0,any1,55,any3,any4,any5,6,any7,134
+99,any0,any1,55,any3,any4,any5,6,any7,108
+99,any0,any1,orange_num,any3,any4,any5,6,any7,108
+101,any0,any1,55,any3,any4,any5,6,any7,111
+101,any0,any1,orange_num,any3,any4,any5,6,any7,111
+103,any0,any1,55,any3,any4,any5,6,any7,114
+103,any0,any1,orange_num,any3,any4,any5,6,any7,114
+105,any0,any1,55,any3,any4,any5,6,any7,117
+105,any0,any1,orange_num,any3,any4,any5,6,any7,117
+120,any0,any1,any2,any3,any4,any5,any6,any7,119
+119,any0,any1,any2,any3,any4,any5,any6,any7,121
+6,any0,any1,red_num,any3,any4,any5,any6,any7,137
+138,any0,any1,any2,any3,any4,any5,6,any7,6
+6,any0,any1,138,any3,any4,any5,any6,any7,138
+137,any0,any1,any2,any3,any4,any5,6,any7,7
+6,any0,any1,137,any3,any4,any5,any6,any7,138
+6,any0,any1,red_num,any3,any4,any5,any6,any7,137
+87,any0,any1,orange_num,any3,any4,any5,7,any7,122
+87,any0,any1,55,any3,any4,any5,7,any7,122
+89,any0,any1,orange_num,any3,any4,any5,7,any7,125
+89,any0,any1,55,any3,any4,any5,7,any7,125
+91,any0,any1,orange_num,any3,any4,any5,7,any7,128
+91,any0,any1,55,any3,any4,any5,7,any7,128
+93,any0,any1,orange_num,any3,any4,any5,7,any7,131
+93,any0,any1,55,any3,any4,any5,7,any7,131
+95,any0,any1,orange_num,any3,any4,any5,7,any7,134
+95,any0,any1,55,any3,any4,any5,7,any7,134
+97,any0,any1,55,any3,any4,any5,7,any7,108
+97,any0,any1,orange_num,any3,any4,any5,7,any7,108
+99,any0,any1,55,any3,any4,any5,7,any7,111
+99,any0,any1,orange_num,any3,any4,any5,7,any7,111
+101,any0,any1,55,any3,any4,any5,7,any7,114
+101,any0,any1,orange_num,any3,any4,any5,7,any7,114
+103,any0,any1,55,any3,any4,any5,7,any7,117
+103,any0,any1,orange_num,any3,any4,any5,7,any7,117
+105,any0,any1,55,any3,any4,any5,7,any7,120
+105,any0,any1,orange_num,any3,any4,any5,7,any7,120
+123,any0,any1,any2,any3,any4,any5,any6,any7,122
+122,any0,any1,any2,any3,any4,any5,any6,any7,124
+7,any0,any1,red_num,any3,any4,any5,any6,any7,137
+138,any0,any1,any2,any3,any4,any5,7,any7,7
+7,any0,any1,138,any3,any4,any5,any6,any7,138
+137,any0,any1,any2,any3,any4,any5,7,any7,8
+7,any0,any1,137,any3,any4,any5,any6,any7,138
+7,any0,any1,red_num,any3,any4,any5,any6,any7,137
+87,any0,any1,orange_num,any3,any4,any5,8,any7,125
+87,any0,any1,55,any3,any4,any5,8,any7,125
+89,any0,any1,orange_num,any3,any4,any5,8,any7,128
+89,any0,any1,55,any3,any4,any5,8,any7,128
+91,any0,any1,orange_num,any3,any4,any5,8,any7,131
+91,any0,any1,55,any3,any4,any5,8,any7,131
+93,any0,any1,orange_num,any3,any4,any5,8,any7,134
+93,any0,any1,55,any3,any4,any5,8,any7,134
+95,any0,any1,55,any3,any4,any5,8,any7,108
+95,any0,any1,orange_num,any3,any4,any5,8,any7,108
+97,any0,any1,55,any3,any4,any5,8,any7,111
+97,any0,any1,orange_num,any3,any4,any5,8,any7,111
+99,any0,any1,55,any3,any4,any5,8,any7,114
+99,any0,any1,orange_num,any3,any4,any5,8,any7,114
+101,any0,any1,55,any3,any4,any5,8,any7,117
+101,any0,any1,orange_num,any3,any4,any5,8,any7,117
+103,any0,any1,55,any3,any4,any5,8,any7,120
+103,any0,any1,orange_num,any3,any4,any5,8,any7,120
+105,any0,any1,55,any3,any4,any5,8,any7,123
+105,any0,any1,orange_num,any3,any4,any5,8,any7,123
+126,any0,any1,any2,any3,any4,any5,any6,any7,125
+125,any0,any1,any2,any3,any4,any5,any6,any7,127
+8,any0,any1,red_num,any3,any4,any5,any6,any7,137
+138,any0,any1,any2,any3,any4,any5,8,any7,8
+8,any0,any1,138,any3,any4,any5,any6,any7,138
+137,any0,any1,any2,any3,any4,any5,8,any7,9
+8,any0,any1,137,any3,any4,any5,any6,any7,138
+8,any0,any1,red_num,any3,any4,any5,any6,any7,137
+87,any0,any1,orange_num,any3,any4,any5,9,any7,128
+87,any0,any1,55,any3,any4,any5,9,any7,128
+89,any0,any1,orange_num,any3,any4,any5,9,any7,131
+89,any0,any1,55,any3,any4,any5,9,any7,131
+91,any0,any1,orange_num,any3,any4,any5,9,any7,134
+91,any0,any1,55,any3,any4,any5,9,any7,134
+93,any0,any1,55,any3,any4,any5,9,any7,108
+93,any0,any1,orange_num,any3,any4,any5,9,any7,108
+95,any0,any1,55,any3,any4,any5,9,any7,111
+95,any0,any1,orange_num,any3,any4,any5,9,any7,111
+97,any0,any1,55,any3,any4,any5,9,any7,114
+97,any0,any1,orange_num,any3,any4,any5,9,any7,114
+99,any0,any1,55,any3,any4,any5,9,any7,117
+99,any0,any1,orange_num,any3,any4,any5,9,any7,117
+101,any0,any1,55,any3,any4,any5,9,any7,120
+101,any0,any1,orange_num,any3,any4,any5,9,any7,120
+103,any0,any1,55,any3,any4,any5,9,any7,123
+103,any0,any1,orange_num,any3,any4,any5,9,any7,123
+105,any0,any1,55,any3,any4,any5,9,any7,126
+105,any0,any1,orange_num,any3,any4,any5,9,any7,126
+129,any0,any1,any2,any3,any4,any5,any6,any7,128
+128,any0,any1,any2,any3,any4,any5,any6,any7,130
+9,any0,any1,red_num,any3,any4,any5,any6,any7,137
+138,any0,any1,any2,any3,any4,any5,9,any7,9
+9,any0,any1,138,any3,any4,any5,any6,any7,138
+137,any0,any1,any2,any3,any4,any5,9,any7,10
+9,any0,any1,137,any3,any4,any5,any6,any7,138
+9,any0,any1,red_num,any3,any4,any5,any6,any7,137
+87,any0,any1,orange_num,any3,any4,any5,10,any7,131
+87,any0,any1,55,any3,any4,any5,10,any7,131
+89,any0,any1,orange_num,any3,any4,any5,10,any7,134
+89,any0,any1,55,any3,any4,any5,10,any7,134
+91,any0,any1,55,any3,any4,any5,10,any7,108
+91,any0,any1,orange_num,any3,any4,any5,10,any7,108
+93,any0,any1,55,any3,any4,any5,10,any7,111
+93,any0,any1,orange_num,any3,any4,any5,10,any7,111
+95,any0,any1,55,any3,any4,any5,10,any7,114
+95,any0,any1,orange_num,any3,any4,any5,10,any7,114
+97,any0,any1,55,any3,any4,any5,10,any7,117
+97,any0,any1,orange_num,any3,any4,any5,10,any7,117
+99,any0,any1,55,any3,any4,any5,10,any7,120
+99,any0,any1,orange_num,any3,any4,any5,10,any7,120
+101,any0,any1,55,any3,any4,any5,10,any7,123
+101,any0,any1,orange_num,any3,any4,any5,10,any7,123
+103,any0,any1,55,any3,any4,any5,10,any7,126
+103,any0,any1,orange_num,any3,any4,any5,10,any7,126
+105,any0,any1,55,any3,any4,any5,10,any7,129
+105,any0,any1,orange_num,any3,any4,any5,10,any7,129
+132,any0,any1,any2,any3,any4,any5,any6,any7,131
+131,any0,any1,any2,any3,any4,any5,any6,any7,133
+10,any0,any1,red_num,any3,any4,any5,any6,any7,137
+138,any0,any1,any2,any3,any4,any5,10,any7,10
+10,any0,any1,138,any3,any4,any5,any6,any7,138
+137,any0,any1,any2,any3,any4,any5,10,any7,11
+10,any0,any1,137,any3,any4,any5,any6,any7,138
+10,any0,any1,red_num,any3,any4,any5,any6,any7,137
+87,any0,any1,orange_num,any3,any4,any5,11,any7,134
+87,any0,any1,55,any3,any4,any5,11,any7,134
+89,any0,any1,55,any3,any4,any5,11,any7,108
+89,any0,any1,orange_num,any3,any4,any5,11,any7,108
+91,any0,any1,55,any3,any4,any5,11,any7,111
+91,any0,any1,orange_num,any3,any4,any5,11,any7,111
+93,any0,any1,55,any3,any4,any5,11,any7,114
+93,any0,any1,orange_num,any3,any4,any5,11,any7,114
+95,any0,any1,55,any3,any4,any5,11,any7,117
+95,any0,any1,orange_num,any3,any4,any5,11,any7,117
+97,any0,any1,55,any3,any4,any5,11,any7,120
+97,any0,any1,orange_num,any3,any4,any5,11,any7,120
+99,any0,any1,55,any3,any4,any5,11,any7,123
+99,any0,any1,orange_num,any3,any4,any5,11,any7,123
+101,any0,any1,55,any3,any4,any5,11,any7,126
+101,any0,any1,orange_num,any3,any4,any5,11,any7,126
+103,any0,any1,55,any3,any4,any5,11,any7,129
+103,any0,any1,orange_num,any3,any4,any5,11,any7,129
+105,any0,any1,55,any3,any4,any5,11,any7,132
+105,any0,any1,orange_num,any3,any4,any5,11,any7,132
+135,any0,any1,any2,any3,any4,any5,any6,any7,134
+134,any0,any1,any2,any3,any4,any5,any6,any7,136
+11,any0,any1,red_num,any3,any4,any5,any6,any7,137
+138,any0,any1,any2,any3,any4,any5,11,any7,11
+11,any0,any1,138,any3,any4,any5,any6,any7,138
+137,any0,any1,any2,any3,any4,any5,11,any7,2
+11,any0,any1,137,any3,any4,any5,any6,any7,137
+11,any0,any1,red_num,any3,any4,any5,any6,any7,137
+plainnumber,any0,any1,yellow_num,any3,any4,any5,any6,any7,138
+1,any0,any1,138,any3,any4,any5,any6,any7,75
+1,any0,any1,137,any3,any4,any5,any6,any7,75
+138,any0,any1,any2,any3,any4,any5,1,any7,2
+137,any0,any1,any2,any3,any4,any5,1,any7,3
+139,any0,any1,any2,any3,any4,any5,any6,any7,1
+1,any0,any1,75,any3,any4,any5,76,any7,139
+75,any0,any1,any2,any3,any4,any5,76,any7,139
+76,any0,any1,139,any3,any4,any5,any6,any7,1
+76,any0,any1,heal_num,any3,any4,any5,any6,any7,1
+1,any0,any1,any2,any3,any4,any5,139,any7,139
+1,any0,any1,any2,any3,any4,any5,heal_num,any7,139
+140,any0,any1,any2,any3,any4,any5,any6,any7,2
+140,any0,any1,any2,any3,any4,any5,any6,any7,2
+2,any0,any1,any2,any3,any4,any5,139,any7,140
+2,any0,any1,any2,any3,any4,any5,heal_num,any7,140
+109,any0,any1,any2,any3,any4,any5,139,any7,140
+109,any0,any1,any2,any3,any4,any5,heal_num,any7,140
+141,any0,any1,any2,any3,any4,any5,any6,any7,3
+141,any0,any1,any2,any3,any4,any5,any6,any7,3
+3,any0,any1,any2,any3,any4,any5,139,any7,141
+3,any0,any1,any2,any3,any4,any5,heal_num,any7,141
+112,any0,any1,any2,any3,any4,any5,139,any7,141
+112,any0,any1,any2,any3,any4,any5,heal_num,any7,141
+142,any0,any1,any2,any3,any4,any5,any6,any7,4
+142,any0,any1,any2,any3,any4,any5,any6,any7,4
+4,any0,any1,any2,any3,any4,any5,139,any7,142
+4,any0,any1,any2,any3,any4,any5,heal_num,any7,142
+115,any0,any1,any2,any3,any4,any5,139,any7,142
+115,any0,any1,any2,any3,any4,any5,heal_num,any7,142
+143,any0,any1,any2,any3,any4,any5,any6,any7,5
+143,any0,any1,any2,any3,any4,any5,any6,any7,5
+5,any0,any1,any2,any3,any4,any5,139,any7,143
+5,any0,any1,any2,any3,any4,any5,heal_num,any7,143
+118,any0,any1,any2,any3,any4,any5,139,any7,143
+118,any0,any1,any2,any3,any4,any5,heal_num,any7,143
+144,any0,any1,any2,any3,any4,any5,any6,any7,6
+144,any0,any1,any2,any3,any4,any5,any6,any7,6
+6,any0,any1,any2,any3,any4,any5,139,any7,144
+6,any0,any1,any2,any3,any4,any5,heal_num,any7,144
+121,any0,any1,any2,any3,any4,any5,139,any7,144
+121,any0,any1,any2,any3,any4,any5,heal_num,any7,144
+145,any0,any1,any2,any3,any4,any5,any6,any7,7
+145,any0,any1,any2,any3,any4,any5,any6,any7,7
+7,any0,any1,any2,any3,any4,any5,139,any7,145
+7,any0,any1,any2,any3,any4,any5,heal_num,any7,145
+124,any0,any1,any2,any3,any4,any5,139,any7,145
+124,any0,any1,any2,any3,any4,any5,heal_num,any7,145
+146,any0,any1,any2,any3,any4,any5,any6,any7,8
+146,any0,any1,any2,any3,any4,any5,any6,any7,8
+8,any0,any1,any2,any3,any4,any5,139,any7,146
+8,any0,any1,any2,any3,any4,any5,heal_num,any7,146
+127,any0,any1,any2,any3,any4,any5,139,any7,146
+127,any0,any1,any2,any3,any4,any5,heal_num,any7,146
+147,any0,any1,any2,any3,any4,any5,any6,any7,9
+147,any0,any1,any2,any3,any4,any5,any6,any7,9
+9,any0,any1,any2,any3,any4,any5,139,any7,147
+9,any0,any1,any2,any3,any4,any5,heal_num,any7,147
+130,any0,any1,any2,any3,any4,any5,139,any7,147
+130,any0,any1,any2,any3,any4,any5,heal_num,any7,147
+148,any0,any1,any2,any3,any4,any5,any6,any7,10
+148,any0,any1,any2,any3,any4,any5,any6,any7,10
+10,any0,any1,any2,any3,any4,any5,139,any7,148
+10,any0,any1,any2,any3,any4,any5,heal_num,any7,148
+133,any0,any1,any2,any3,any4,any5,139,any7,148
+133,any0,any1,any2,any3,any4,any5,heal_num,any7,148
+149,any0,any1,any2,any3,any4,any5,any6,any7,11
+149,any0,any1,any2,any3,any4,any5,any6,any7,11
+11,any0,any1,any2,any3,any4,any5,139,any7,149
+11,any0,any1,any2,any3,any4,any5,heal_num,any7,149
+136,any0,any1,any2,any3,any4,any5,139,any7,149
+136,any0,any1,any2,any3,any4,any5,heal_num,any7,149
+55,any0,any1,any2,any3,any4,any5,139,any7,74
+55,any0,any1,any2,any3,any4,any5,heal_num,any7,74
+1,any0,any1,75,any3,any4,any5,55,any7,150
+150,any0,any1,any2,any3,any4,any5,any6,any7,2
+1,any0,any1,any2,any3,any4,any5,150,any7,150
+57,any0,any1,72,any3,any4,any5,any6,any7,64
+71,any0,any1,any2,any3,any4,any5,64,any7,151
+151,any0,any1,any2,any3,any4,any5,any6,any7,152
+152,any0,any1,any2,any3,any4,any5,any6,any7,153
+57,any0,any1,any2,any3,152,any5,any6,any7,64
+57,any0,any1,152,any3,any4,any5,any6,any7,156
+156,any0,any1,any2,any3,any4,any5,64,any7,157
+157,any0,any1,any2,any3,any4,any5,any6,any7,158
+158,any0,any1,any2,any3,any4,any5,any6,any7,64
+153,any0,any1,any2,any3,any4,any5,64,any7,154
+154,any0,any1,any2,any3,any4,any5,any6,any7,153
+57,any0,any1,any2,any3,154,any5,any6,any7,64
+156,64,any1,any2,any3,any4,any5,56,any7,159
+57,any0,any1,any2,any3,any4,any5,159,any7,159
+159,any0,any1,any2,any3,any4,any5,any6,any7,57
+153,any0,any1,any2,any3,any4,any5,159,any7,155
+57,any0,any1,158,any3,any4,any5,any6,any7,156
+57,any0,any1,any2,any3,155,any5,any6,any7,160
+57,any0,any1,any2,any3,160,any5,any6,any7,160
+160,56,any1,any2,any3,any4,any5,any6,any7,161
+160,any0,any1,any2,any3,any4,any5,any6,any7,57
+155,any0,any1,any2,any3,any4,any5,any6,any7,163
+163,any0,any1,any2,any3,any4,any5,any6,any7,164
+164,any0,any1,any2,any3,any4,any5,any6,any7,165
+165,any0,any1,any2,any3,any4,any5,any6,any7,166
+166,any0,any1,any2,any3,any4,any5,any6,any7,167
+167,any0,any1,any2,any3,any4,any5,any6,any7,163
+57,any0,any1,any2,any3,163,any5,any6,any7,162
+162,161,any1,any2,any3,any4,any5,any6,any7,161
+57,any0,any1,any2,any3,162,any5,any6,any7,162
+162,any0,any1,any2,any3,any4,any5,any6,any7,57
+161,any0,any1,any2,any3,161,any5,any6,any7,57
+55,any0,any1,161,any3,any4,any5,any6,any7,168
+168,any0,any1,any2,any3,any4,any5,any6,any7,169
+169,any0,any1,any2,any3,any4,any5,any6,any7,170
+170,any0,any1,any2,any3,any4,any5,any6,any7,171
+171,any0,any1,any2,any3,any4,any5,any6,any7,55
+2,plainnumber,any1,168,any3,any4,any5,any6,any7,172
+172,2,any1,no_carry,any3,any4,any5,any6,any7,173
+172,2,any1,169,any3,any4,any5,any6,any7,173
+172,2,any1,carry,any3,any4,any5,any6,any7,176
+172,3,any1,no_carry,any3,any4,any5,any6,any7,176
+172,3,any1,169,any3,any4,any5,any6,any7,176
+172,3,any1,carry,any3,any4,any5,any6,any7,179
+172,4,any1,no_carry,any3,any4,any5,any6,any7,179
+172,4,any1,169,any3,any4,any5,any6,any7,179
+172,4,any1,carry,any3,any4,any5,any6,any7,182
+172,5,any1,no_carry,any3,any4,any5,any6,any7,182
+172,5,any1,169,any3,any4,any5,any6,any7,182
+172,5,any1,carry,any3,any4,any5,any6,any7,185
+172,6,any1,no_carry,any3,any4,any5,any6,any7,185
+172,6,any1,169,any3,any4,any5,any6,any7,185
+172,6,any1,carry,any3,any4,any5,any6,any7,188
+172,7,any1,no_carry,any3,any4,any5,any6,any7,188
+172,7,any1,169,any3,any4,any5,any6,any7,188
+172,7,any1,carry,any3,any4,any5,any6,any7,191
+172,8,any1,no_carry,any3,any4,any5,any6,any7,191
+172,8,any1,169,any3,any4,any5,any6,any7,191
+172,8,any1,carry,any3,any4,any5,any6,any7,194
+172,9,any1,no_carry,any3,any4,any5,any6,any7,194
+172,9,any1,169,any3,any4,any5,any6,any7,194
+172,9,any1,carry,any3,any4,any5,any6,any7,197
+172,10,any1,no_carry,any3,any4,any5,any6,any7,197
+172,10,any1,169,any3,any4,any5,any6,any7,197
+172,10,any1,carry,any3,any4,any5,any6,any7,200
+172,11,any1,no_carry,any3,any4,any5,any6,any7,200
+172,11,any1,169,any3,any4,any5,any6,any7,200
+172,11,any1,carry,any3,any4,any5,any6,any7,174
+174,any0,any1,any2,any3,any4,any5,any6,any7,2
+173,any0,any1,any2,any3,any4,any5,any6,any7,2
+2,any0,any1,add,any3,any4,any5,any6,any7,172
+3,plainnumber,any1,168,any3,any4,any5,any6,any7,175
+175,2,any1,no_carry,any3,any4,any5,any6,any7,176
+175,2,any1,169,any3,any4,any5,any6,any7,176
+175,2,any1,carry,any3,any4,any5,any6,any7,179
+175,3,any1,no_carry,any3,any4,any5,any6,any7,179
+175,3,any1,169,any3,any4,any5,any6,any7,179
+175,3,any1,carry,any3,any4,any5,any6,any7,182
+175,4,any1,no_carry,any3,any4,any5,any6,any7,182
+175,4,any1,169,any3,any4,any5,any6,any7,182
+175,4,any1,carry,any3,any4,any5,any6,any7,185
+175,5,any1,no_carry,any3,any4,any5,any6,any7,185
+175,5,any1,169,any3,any4,any5,any6,any7,185
+175,5,any1,carry,any3,any4,any5,any6,any7,188
+175,6,any1,no_carry,any3,any4,any5,any6,any7,188
+175,6,any1,169,any3,any4,any5,any6,any7,188
+175,6,any1,carry,any3,any4,any5,any6,any7,191
+175,7,any1,no_carry,any3,any4,any5,any6,any7,191
+175,7,any1,169,any3,any4,any5,any6,any7,191
+175,7,any1,carry,any3,any4,any5,any6,any7,194
+175,8,any1,no_carry,any3,any4,any5,any6,any7,194
+175,8,any1,169,any3,any4,any5,any6,any7,194
+175,8,any1,carry,any3,any4,any5,any6,any7,197
+175,9,any1,no_carry,any3,any4,any5,any6,any7,197
+175,9,any1,169,any3,any4,any5,any6,any7,197
+175,9,any1,carry,any3,any4,any5,any6,any7,200
+175,10,any1,no_carry,any3,any4,any5,any6,any7,200
+175,10,any1,169,any3,any4,any5,any6,any7,200
+175,10,any1,carry,any3,any4,any5,any6,any7,174
+175,11,any1,no_carry,any3,any4,any5,any6,any7,174
+175,11,any1,169,any3,any4,any5,any6,any7,174
+175,11,any1,carry,any3,any4,any5,any6,any7,177
+177,any0,any1,any2,any3,any4,any5,any6,any7,3
+176,any0,any1,any2,any3,any4,any5,any6,any7,3
+3,any0,any1,add,any3,any4,any5,any6,any7,175
+4,plainnumber,any1,168,any3,any4,any5,any6,any7,178
+178,2,any1,no_carry,any3,any4,any5,any6,any7,179
+178,2,any1,169,any3,any4,any5,any6,any7,179
+178,2,any1,carry,any3,any4,any5,any6,any7,182
+178,3,any1,no_carry,any3,any4,any5,any6,any7,182
+178,3,any1,169,any3,any4,any5,any6,any7,182
+178,3,any1,carry,any3,any4,any5,any6,any7,185
+178,4,any1,no_carry,any3,any4,any5,any6,any7,185
+178,4,any1,169,any3,any4,any5,any6,any7,185
+178,4,any1,carry,any3,any4,any5,any6,any7,188
+178,5,any1,no_carry,any3,any4,any5,any6,any7,188
+178,5,any1,169,any3,any4,any5,any6,any7,188
+178,5,any1,carry,any3,any4,any5,any6,any7,191
+178,6,any1,no_carry,any3,any4,any5,any6,any7,191
+178,6,any1,169,any3,any4,any5,any6,any7,191
+178,6,any1,carry,any3,any4,any5,any6,any7,194
+178,7,any1,no_carry,any3,any4,any5,any6,any7,194
+178,7,any1,169,any3,any4,any5,any6,any7,194
+178,7,any1,carry,any3,any4,any5,any6,any7,197
+178,8,any1,no_carry,any3,any4,any5,any6,any7,197
+178,8,any1,169,any3,any4,any5,any6,any7,197
+178,8,any1,carry,any3,any4,any5,any6,any7,200
+178,9,any1,no_carry,any3,any4,any5,any6,any7,200
+178,9,any1,169,any3,any4,any5,any6,any7,200
+178,9,any1,carry,any3,any4,any5,any6,any7,174
+178,10,any1,no_carry,any3,any4,any5,any6,any7,174
+178,10,any1,169,any3,any4,any5,any6,any7,174
+178,10,any1,carry,any3,any4,any5,any6,any7,177
+178,11,any1,no_carry,any3,any4,any5,any6,any7,177
+178,11,any1,169,any3,any4,any5,any6,any7,177
+178,11,any1,carry,any3,any4,any5,any6,any7,180
+180,any0,any1,any2,any3,any4,any5,any6,any7,4
+179,any0,any1,any2,any3,any4,any5,any6,any7,4
+4,any0,any1,add,any3,any4,any5,any6,any7,178
+5,plainnumber,any1,168,any3,any4,any5,any6,any7,181
+181,2,any1,no_carry,any3,any4,any5,any6,any7,182
+181,2,any1,169,any3,any4,any5,any6,any7,182
+181,2,any1,carry,any3,any4,any5,any6,any7,185
+181,3,any1,no_carry,any3,any4,any5,any6,any7,185
+181,3,any1,169,any3,any4,any5,any6,any7,185
+181,3,any1,carry,any3,any4,any5,any6,any7,188
+181,4,any1,no_carry,any3,any4,any5,any6,any7,188
+181,4,any1,169,any3,any4,any5,any6,any7,188
+181,4,any1,carry,any3,any4,any5,any6,any7,191
+181,5,any1,no_carry,any3,any4,any5,any6,any7,191
+181,5,any1,169,any3,any4,any5,any6,any7,191
+181,5,any1,carry,any3,any4,any5,any6,any7,194
+181,6,any1,no_carry,any3,any4,any5,any6,any7,194
+181,6,any1,169,any3,any4,any5,any6,any7,194
+181,6,any1,carry,any3,any4,any5,any6,any7,197
+181,7,any1,no_carry,any3,any4,any5,any6,any7,197
+181,7,any1,169,any3,any4,any5,any6,any7,197
+181,7,any1,carry,any3,any4,any5,any6,any7,200
+181,8,any1,no_carry,any3,any4,any5,any6,any7,200
+181,8,any1,169,any3,any4,any5,any6,any7,200
+181,8,any1,carry,any3,any4,any5,any6,any7,174
+181,9,any1,no_carry,any3,any4,any5,any6,any7,174
+181,9,any1,169,any3,any4,any5,any6,any7,174
+181,9,any1,carry,any3,any4,any5,any6,any7,177
+181,10,any1,no_carry,any3,any4,any5,any6,any7,177
+181,10,any1,169,any3,any4,any5,any6,any7,177
+181,10,any1,carry,any3,any4,any5,any6,any7,180
+181,11,any1,no_carry,any3,any4,any5,any6,any7,180
+181,11,any1,169,any3,any4,any5,any6,any7,180
+181,11,any1,carry,any3,any4,any5,any6,any7,183
+183,any0,any1,any2,any3,any4,any5,any6,any7,5
+182,any0,any1,any2,any3,any4,any5,any6,any7,5
+5,any0,any1,add,any3,any4,any5,any6,any7,181
+6,plainnumber,any1,168,any3,any4,any5,any6,any7,184
+184,2,any1,no_carry,any3,any4,any5,any6,any7,185
+184,2,any1,169,any3,any4,any5,any6,any7,185
+184,2,any1,carry,any3,any4,any5,any6,any7,188
+184,3,any1,no_carry,any3,any4,any5,any6,any7,188
+184,3,any1,169,any3,any4,any5,any6,any7,188
+184,3,any1,carry,any3,any4,any5,any6,any7,191
+184,4,any1,no_carry,any3,any4,any5,any6,any7,191
+184,4,any1,169,any3,any4,any5,any6,any7,191
+184,4,any1,carry,any3,any4,any5,any6,any7,194
+184,5,any1,no_carry,any3,any4,any5,any6,any7,194
+184,5,any1,169,any3,any4,any5,any6,any7,194
+184,5,any1,carry,any3,any4,any5,any6,any7,197
+184,6,any1,no_carry,any3,any4,any5,any6,any7,197
+184,6,any1,169,any3,any4,any5,any6,any7,197
+184,6,any1,carry,any3,any4,any5,any6,any7,200
+184,7,any1,no_carry,any3,any4,any5,any6,any7,200
+184,7,any1,169,any3,any4,any5,any6,any7,200
+184,7,any1,carry,any3,any4,any5,any6,any7,174
+184,8,any1,no_carry,any3,any4,any5,any6,any7,174
+184,8,any1,169,any3,any4,any5,any6,any7,174
+184,8,any1,carry,any3,any4,any5,any6,any7,177
+184,9,any1,no_carry,any3,any4,any5,any6,any7,177
+184,9,any1,169,any3,any4,any5,any6,any7,177
+184,9,any1,carry,any3,any4,any5,any6,any7,180
+184,10,any1,no_carry,any3,any4,any5,any6,any7,180
+184,10,any1,169,any3,any4,any5,any6,any7,180
+184,10,any1,carry,any3,any4,any5,any6,any7,183
+184,11,any1,no_carry,any3,any4,any5,any6,any7,183
+184,11,any1,169,any3,any4,any5,any6,any7,183
+184,11,any1,carry,any3,any4,any5,any6,any7,186
+186,any0,any1,any2,any3,any4,any5,any6,any7,6
+185,any0,any1,any2,any3,any4,any5,any6,any7,6
+6,any0,any1,add,any3,any4,any5,any6,any7,184
+7,plainnumber,any1,168,any3,any4,any5,any6,any7,187
+187,2,any1,no_carry,any3,any4,any5,any6,any7,188
+187,2,any1,169,any3,any4,any5,any6,any7,188
+187,2,any1,carry,any3,any4,any5,any6,any7,191
+187,3,any1,no_carry,any3,any4,any5,any6,any7,191
+187,3,any1,169,any3,any4,any5,any6,any7,191
+187,3,any1,carry,any3,any4,any5,any6,any7,194
+187,4,any1,no_carry,any3,any4,any5,any6,any7,194
+187,4,any1,169,any3,any4,any5,any6,any7,194
+187,4,any1,carry,any3,any4,any5,any6,any7,197
+187,5,any1,no_carry,any3,any4,any5,any6,any7,197
+187,5,any1,169,any3,any4,any5,any6,any7,197
+187,5,any1,carry,any3,any4,any5,any6,any7,200
+187,6,any1,no_carry,any3,any4,any5,any6,any7,200
+187,6,any1,169,any3,any4,any5,any6,any7,200
+187,6,any1,carry,any3,any4,any5,any6,any7,174
+187,7,any1,no_carry,any3,any4,any5,any6,any7,174
+187,7,any1,169,any3,any4,any5,any6,any7,174
+187,7,any1,carry,any3,any4,any5,any6,any7,177
+187,8,any1,no_carry,any3,any4,any5,any6,any7,177
+187,8,any1,169,any3,any4,any5,any6,any7,177
+187,8,any1,carry,any3,any4,any5,any6,any7,180
+187,9,any1,no_carry,any3,any4,any5,any6,any7,180
+187,9,any1,169,any3,any4,any5,any6,any7,180
+187,9,any1,carry,any3,any4,any5,any6,any7,183
+187,10,any1,no_carry,any3,any4,any5,any6,any7,183
+187,10,any1,169,any3,any4,any5,any6,any7,183
+187,10,any1,carry,any3,any4,any5,any6,any7,186
+187,11,any1,no_carry,any3,any4,any5,any6,any7,186
+187,11,any1,169,any3,any4,any5,any6,any7,186
+187,11,any1,carry,any3,any4,any5,any6,any7,189
+189,any0,any1,any2,any3,any4,any5,any6,any7,7
+188,any0,any1,any2,any3,any4,any5,any6,any7,7
+7,any0,any1,add,any3,any4,any5,any6,any7,187
+8,plainnumber,any1,168,any3,any4,any5,any6,any7,190
+190,2,any1,no_carry,any3,any4,any5,any6,any7,191
+190,2,any1,169,any3,any4,any5,any6,any7,191
+190,2,any1,carry,any3,any4,any5,any6,any7,194
+190,3,any1,no_carry,any3,any4,any5,any6,any7,194
+190,3,any1,169,any3,any4,any5,any6,any7,194
+190,3,any1,carry,any3,any4,any5,any6,any7,197
+190,4,any1,no_carry,any3,any4,any5,any6,any7,197
+190,4,any1,169,any3,any4,any5,any6,any7,197
+190,4,any1,carry,any3,any4,any5,any6,any7,200
+190,5,any1,no_carry,any3,any4,any5,any6,any7,200
+190,5,any1,169,any3,any4,any5,any6,any7,200
+190,5,any1,carry,any3,any4,any5,any6,any7,174
+190,6,any1,no_carry,any3,any4,any5,any6,any7,174
+190,6,any1,169,any3,any4,any5,any6,any7,174
+190,6,any1,carry,any3,any4,any5,any6,any7,177
+190,7,any1,no_carry,any3,any4,any5,any6,any7,177
+190,7,any1,169,any3,any4,any5,any6,any7,177
+190,7,any1,carry,any3,any4,any5,any6,any7,180
+190,8,any1,no_carry,any3,any4,any5,any6,any7,180
+190,8,any1,169,any3,any4,any5,any6,any7,180
+190,8,any1,carry,any3,any4,any5,any6,any7,183
+190,9,any1,no_carry,any3,any4,any5,any6,any7,183
+190,9,any1,169,any3,any4,any5,any6,any7,183
+190,9,any1,carry,any3,any4,any5,any6,any7,186
+190,10,any1,no_carry,any3,any4,any5,any6,any7,186
+190,10,any1,169,any3,any4,any5,any6,any7,186
+190,10,any1,carry,any3,any4,any5,any6,any7,189
+190,11,any1,no_carry,any3,any4,any5,any6,any7,189
+190,11,any1,169,any3,any4,any5,any6,any7,189
+190,11,any1,carry,any3,any4,any5,any6,any7,192
+192,any0,any1,any2,any3,any4,any5,any6,any7,8
+191,any0,any1,any2,any3,any4,any5,any6,any7,8
+8,any0,any1,add,any3,any4,any5,any6,any7,190
+9,plainnumber,any1,168,any3,any4,any5,any6,any7,193
+193,2,any1,no_carry,any3,any4,any5,any6,any7,194
+193,2,any1,169,any3,any4,any5,any6,any7,194
+193,2,any1,carry,any3,any4,any5,any6,any7,197
+193,3,any1,no_carry,any3,any4,any5,any6,any7,197
+193,3,any1,169,any3,any4,any5,any6,any7,197
+193,3,any1,carry,any3,any4,any5,any6,any7,200
+193,4,any1,no_carry,any3,any4,any5,any6,any7,200
+193,4,any1,169,any3,any4,any5,any6,any7,200
+193,4,any1,carry,any3,any4,any5,any6,any7,174
+193,5,any1,no_carry,any3,any4,any5,any6,any7,174
+193,5,any1,169,any3,any4,any5,any6,any7,174
+193,5,any1,carry,any3,any4,any5,any6,any7,177
+193,6,any1,no_carry,any3,any4,any5,any6,any7,177
+193,6,any1,169,any3,any4,any5,any6,any7,177
+193,6,any1,carry,any3,any4,any5,any6,any7,180
+193,7,any1,no_carry,any3,any4,any5,any6,any7,180
+193,7,any1,169,any3,any4,any5,any6,any7,180
+193,7,any1,carry,any3,any4,any5,any6,any7,183
+193,8,any1,no_carry,any3,any4,any5,any6,any7,183
+193,8,any1,169,any3,any4,any5,any6,any7,183
+193,8,any1,carry,any3,any4,any5,any6,any7,186
+193,9,any1,no_carry,any3,any4,any5,any6,any7,186
+193,9,any1,169,any3,any4,any5,any6,any7,186
+193,9,any1,carry,any3,any4,any5,any6,any7,189
+193,10,any1,no_carry,any3,any4,any5,any6,any7,189
+193,10,any1,169,any3,any4,any5,any6,any7,189
+193,10,any1,carry,any3,any4,any5,any6,any7,192
+193,11,any1,no_carry,any3,any4,any5,any6,any7,192
+193,11,any1,169,any3,any4,any5,any6,any7,192
+193,11,any1,carry,any3,any4,any5,any6,any7,195
+195,any0,any1,any2,any3,any4,any5,any6,any7,9
+194,any0,any1,any2,any3,any4,any5,any6,any7,9
+9,any0,any1,add,any3,any4,any5,any6,any7,193
+10,plainnumber,any1,168,any3,any4,any5,any6,any7,196
+196,2,any1,no_carry,any3,any4,any5,any6,any7,197
+196,2,any1,169,any3,any4,any5,any6,any7,197
+196,2,any1,carry,any3,any4,any5,any6,any7,200
+196,3,any1,no_carry,any3,any4,any5,any6,any7,200
+196,3,any1,169,any3,any4,any5,any6,any7,200
+196,3,any1,carry,any3,any4,any5,any6,any7,174
+196,4,any1,no_carry,any3,any4,any5,any6,any7,174
+196,4,any1,169,any3,any4,any5,any6,any7,174
+196,4,any1,carry,any3,any4,any5,any6,any7,177
+196,5,any1,no_carry,any3,any4,any5,any6,any7,177
+196,5,any1,169,any3,any4,any5,any6,any7,177
+196,5,any1,carry,any3,any4,any5,any6,any7,180
+196,6,any1,no_carry,any3,any4,any5,any6,any7,180
+196,6,any1,169,any3,any4,any5,any6,any7,180
+196,6,any1,carry,any3,any4,any5,any6,any7,183
+196,7,any1,no_carry,any3,any4,any5,any6,any7,183
+196,7,any1,169,any3,any4,any5,any6,any7,183
+196,7,any1,carry,any3,any4,any5,any6,any7,186
+196,8,any1,no_carry,any3,any4,any5,any6,any7,186
+196,8,any1,169,any3,any4,any5,any6,any7,186
+196,8,any1,carry,any3,any4,any5,any6,any7,189
+196,9,any1,no_carry,any3,any4,any5,any6,any7,189
+196,9,any1,169,any3,any4,any5,any6,any7,189
+196,9,any1,carry,any3,any4,any5,any6,any7,192
+196,10,any1,no_carry,any3,any4,any5,any6,any7,192
+196,10,any1,169,any3,any4,any5,any6,any7,192
+196,10,any1,carry,any3,any4,any5,any6,any7,195
+196,11,any1,no_carry,any3,any4,any5,any6,any7,195
+196,11,any1,169,any3,any4,any5,any6,any7,195
+196,11,any1,carry,any3,any4,any5,any6,any7,198
+198,any0,any1,any2,any3,any4,any5,any6,any7,10
+197,any0,any1,any2,any3,any4,any5,any6,any7,10
+10,any0,any1,add,any3,any4,any5,any6,any7,196
+11,plainnumber,any1,168,any3,any4,any5,any6,any7,199
+199,2,any1,no_carry,any3,any4,any5,any6,any7,200
+199,2,any1,169,any3,any4,any5,any6,any7,200
+199,2,any1,carry,any3,any4,any5,any6,any7,174
+199,3,any1,no_carry,any3,any4,any5,any6,any7,174
+199,3,any1,169,any3,any4,any5,any6,any7,174
+199,3,any1,carry,any3,any4,any5,any6,any7,177
+199,4,any1,no_carry,any3,any4,any5,any6,any7,177
+199,4,any1,169,any3,any4,any5,any6,any7,177
+199,4,any1,carry,any3,any4,any5,any6,any7,180
+199,5,any1,no_carry,any3,any4,any5,any6,any7,180
+199,5,any1,169,any3,any4,any5,any6,any7,180
+199,5,any1,carry,any3,any4,any5,any6,any7,183
+199,6,any1,no_carry,any3,any4,any5,any6,any7,183
+199,6,any1,169,any3,any4,any5,any6,any7,183
+199,6,any1,carry,any3,any4,any5,any6,any7,186
+199,7,any1,no_carry,any3,any4,any5,any6,any7,186
+199,7,any1,169,any3,any4,any5,any6,any7,186
+199,7,any1,carry,any3,any4,any5,any6,any7,189
+199,8,any1,no_carry,any3,any4,any5,any6,any7,189
+199,8,any1,169,any3,any4,any5,any6,any7,189
+199,8,any1,carry,any3,any4,any5,any6,any7,192
+199,9,any1,no_carry,any3,any4,any5,any6,any7,192
+199,9,any1,169,any3,any4,any5,any6,any7,192
+199,9,any1,carry,any3,any4,any5,any6,any7,195
+199,10,any1,no_carry,any3,any4,any5,any6,any7,195
+199,10,any1,169,any3,any4,any5,any6,any7,195
+199,10,any1,carry,any3,any4,any5,any6,any7,198
+199,11,any1,no_carry,any3,any4,any5,any6,any7,198
+199,11,any1,169,any3,any4,any5,any6,any7,198
+199,11,any1,carry,any3,any4,any5,any6,any7,201
+201,any0,any1,any2,any3,any4,any5,any6,any7,11
+200,any0,any1,any2,any3,any4,any5,any6,any7,11
+11,any0,any1,add,any3,any4,any5,any6,any7,199
+@COLORS
+0 0 0 0
+1 50 50 50
+2 0 30 0
+3 0 50 0
+4 0 70 0
+5 0 90 0
+6 0 110 0
+7 0 130 0
+8 0 150 0
+9 0 170 0
+10 0 190 0
+11 0 210 0
+12 30 30 0
+13 50 50 0
+14 70 70 0
+15 90 90 0
+16 110 110 0
+17 130 130 0
+18 150 150 0
+19 170 170 0
+20 190 190 0
+21 210 210 0
+22 0 30 30
+23 0 30 30
+24 0 30 30
+25 0 30 30
+26 0 30 30
+27 0 30 30
+28 0 30 30
+29 0 30 30
+30 0 30 30
+31 0 30 30
+32 0 30 30
+33 0 30 30
+34 0 30 30
+35 0 30 30
+36 0 30 30
+37 0 30 30
+38 0 30 30
+39 0 30 30
+40 0 30 30
+41 0 30 30
+42 255 255 255
+43 255 0 0
+44 255 0 0
+45 255 0 0
+46 255 0 0
+47 255 0 0
+48 255 0 0
+49 255 0 0
+50 255 0 0
+51 255 0 0
+52 255 0 0
+53 255 0 255
+54 255 0 255
+55 30 30 30
+56 70 70 70
+57 160 160 20
+58 255 255 255
+59 255 255 255
+60 255 255 255
+61 255 255 255
+62 0 0 50
+63 0 0 50
+64 255 190 30
+65 255 190 30
+66 0 255 255
+67 0 255 255
+68 255 255 255
+69 255 255 255
+70 0 0 90
+71 0 0 90
+72 0 0 255
+73 0 0 255
+74 255 0 0
+75 255 255 255
+76 255 0 0
+77 255 255 255
+78 255 255 255
+79 255 255 255
+80 255 255 255
+81 255 255 255
+82 255 255 255
+83 255 255 255
+84 255 255 255
+85 255 255 255
+86 255 255 255
+87 255 255 255
+88 255 0 0
+89 255 255 255
+90 255 0 0
+91 255 255 255
+92 255 0 0
+93 255 255 255
+94 255 0 0
+95 255 255 255
+96 255 0 0
+97 255 255 255
+98 255 0 0
+99 255 255 255
+100 255 0 0
+101 255 255 255
+102 255 0 0
+103 255 255 255
+104 255 0 0
+105 255 255 255
+106 255 0 0
+107 255 255 0
+108 255 0 0
+109 255 100 0
+110 255 255 0
+111 255 0 0
+112 255 100 0
+113 255 255 0
+114 255 0 0
+115 255 100 0
+116 255 255 0
+117 255 0 0
+118 255 100 0
+119 255 255 0
+120 255 0 0
+121 255 100 0
+122 255 255 0
+123 255 0 0
+124 255 100 0
+125 255 255 0
+126 255 0 0
+127 255 100 0
+128 255 255 0
+129 255 0 0
+130 255 100 0
+131 255 255 0
+132 255 0 0
+133 255 100 0
+134 255 255 0
+135 255 0 0
+136 255 100 0
+137 0 0 255
+138 0 0 100
+139 0 255 255
+140 0 255 255
+141 0 255 255
+142 0 255 255
+143 0 255 255
+144 0 255 255
+145 0 255 255
+146 0 255 255
+147 0 255 255
+148 0 255 255
+149 0 255 255
+150 0 255 255
+151 0 0 120
+152 0 0 120
+153 0 0 120
+154 0 0 120
+155 0 0 200
+156 255 0 0
+157 255 0 0
+158 255 0 0
+159 0 0 255
+160 0 0 255
+161 0 0 255
+162 0 0 150
+163 0 0 120
+164 0 0 120
+165 0 0 120
+166 0 0 120
+167 0 0 120
+168 255 0 0
+169 255 255 0
+170 255 255 0
+171 255 255 0
+172 0 0 255
+173 0 0 255
+174 0 0 255
+175 0 0 255
+176 0 0 255
+177 0 0 255
+178 0 0 255
+179 0 0 255
+180 0 0 255
+181 0 0 255
+182 0 0 255
+183 0 0 255
+184 0 0 255
+185 0 0 255
+186 0 0 255
+187 0 0 255
+188 0 0 255
+189 0 0 255
+190 0 0 255
+191 0 0 255
+192 0 0 255
+193 0 0 255
+194 0 0 255
+195 0 0 255
+196 0 0 255
+197 0 0 255
+198 0 0 255
+199 0 0 255
+200 0 0 255
+201 0 0 255
